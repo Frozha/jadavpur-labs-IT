@@ -1,0 +1,29 @@
+BE-IT 2nd Year 2nd Semester
+Assignments: Error Control & Flow Control
+
+1. Implement the Simplest Protocol in C/C++ for sender-site DLL and receiver-site DLL
+with the following the following elementary functionalities:
+WaitForEvent(), GetData(), MakeFrame(), SendFrame(), ReceiveFrame(),
+
+ExtractData(), DeliverData()
+2. Implement Stop-n-wait protocol in C/C++ by considering:
+a. Channel is noiseless
+b. Channel is noisy (hint: introduce probability of damaging/losing the frame in
+transit)
+
+3. Implement Go-back-n based sliding window protocol in C/C++ by considering the
+followings:
+a. DLL communications are Non-NACK based
+b. DLL communications are NACK based
+c. DLL communications are Piggybacked based (i.e.. bi-directional communication)
+4. Write a program in C/C++ with suitable functions to implement Selective-repeat based
+sliding window protocol by considering the followings:
+a. DLL communications are Non-NACK based
+b. DLL communications are NACK based
+c. DLL communications are Piggybacked based
+5. Suppose there is a provision to let the sender know about the condition of the receiver’s
+buffer (i.e., buffer size is 1 or 2m-1
+
+) by using a framing bit along with ACK. Write an
+optimized sliding window protocol in C/C++ to improve performance of the DLL
+communication systems
