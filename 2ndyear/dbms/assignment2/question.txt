@@ -1,0 +1,39 @@
+Assignment 2 
+
+1. Display the Name, manager Id, and hire date of all employees who are either clerk or  works in dept 20. the date should be in the following format:  
+DATE_HIRED 
+Seventeenth December, 1980 
+Second April, 1981 
+
+2. List the employee name and old salary and new increased salary by 25% and expressed  as a whole number. 
+
+3. List the employee name and salary where name is displayed as left justified and salary  with right justified. 
+
+4. Produce the output as follows(for all employees) 
+ROLE OF THE EMPLOYEE 
+Name1 (<Job of Name 1>) 
+Name2 (<Job of Name 2>) 
+........ 
+Note: Only first character of Name and job will be in uppercase. 
+
+5. Give the details of an employees with job is clerk (enter the job value clerk as input). 
+
+6. Display each employee name with hiredate and salary review date. Assume that date is  one year after hiredate. Order the output in ascending review date order. 
+
+7. Find the employees(s) who earn the highest salary in each job type sort in descending  salary order(Use IN operator and subqueries) 
+
+8. Find the most recently hired employee in each department (give number only). 
+
+9. Show the name of the department and no of employees who works in that department.  Sort in department number. 
+
+10. Display the Id, name, salary and the salary grade for any employee who earns the maximum salary for their department. Sort in department number. 
+
+11. In which year did most people join the company? Display the year and number of  employees. 
+
+12. Show the every alternate row in employee table. 
+    
+13. Display the total salary of all employees. Total salary = salary + commission.  
+
+14. Display the department name and available jobs in that department.  
+
+15. Display all the available departments and the employee(s) works under it. 

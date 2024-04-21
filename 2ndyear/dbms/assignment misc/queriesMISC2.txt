@@ -1,0 +1,4 @@
+1. select  company_name,count(empno) from workson group by company_name order by company_name;
+2. select employee.* , workson.company_name, workson.salary from employee, workson 
+    where (workson.salary, workson.company_name) in (select  max(salary) , company_name from workson group by company_name) and workson.empno = employee.empno 
+    order by company_name;

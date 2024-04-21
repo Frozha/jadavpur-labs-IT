@@ -1,0 +1,23 @@
+Assignment 1
+
+1. Show the details of all employees.
+
+2. Show the department no. and name of all departments.
+
+3.  Display the employee id, name and department no of all employees whose department no is 20.
+
+4.  Display the details of all employees where department no should be in descending order. 
+
+5. Show all available jobs in the employee table.
+
+6. Show the name, Annual Salary and department no of employees who works as a clerk in department 20. 
+  
+7.  Show the name and HIRED date of those employee whose name start with ‘S’ or second character is ‘C’.
+
+8. Show the name, hire date and salary of those employee who are not a manager. 
+
+9. Display all employee names in title case and length of the name.
+
+10. Display the name of employee who gets the salary between 4000 to 6000.
+
+

@@ -1,0 +1,2 @@
+1. Show the name of the company and no of employees who works in that company.
+2. Display the Empno, Name for any employee who earns the maximum salary for their Company.      

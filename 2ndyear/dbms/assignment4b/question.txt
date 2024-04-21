@@ -1,0 +1,17 @@
+1. Write a PL/SQL code block that will accept an Employee number from the user and allows a Commission of Rs.200 only if the net salary is less than Rs.2000. 
+2. Write a PL/SQL block that will display the name, department and the salary of the first 4 employees getting highest salary.
+3. Write a PL/SQL block to display the name of the each department and their employee name only who got the lowest net salary.
+4. Write a PL/SQL block to display the name of the each department and average salary of their employees.
+5. Write a PL/SQL procedure that will calculate and print the incentive of the employees those who worked under a specific Job. 
+
+        JOB         Incentive
+        Clerk       10% of their Salary
+        Salesman    12% of their Salary
+        Manager     15% of their Salary
+        Analyst     1000
+
+
+6. Write a PL/SQL Cursor that will accept an employee number from the user and allows an increment of 20% if the salary is less than 1500 otherwise increment of Rs.1200. It should print old and new salary for all employees.
+7. When any new record will be inserted in EMP_XX table, a PL/SQL trigger will fired that will check if the department no is available or not. If available then the tuple will be inserted otherwise it will undo the operation and display appropriate messages. 
+
+

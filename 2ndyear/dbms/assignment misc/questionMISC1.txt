@@ -1,0 +1,5 @@
+1. List the names of employees and the name of their managers.
+2. List the department names and the total number of employees in each department.
+3. Show the employee names, job titles, and salaries of employees who work in departments located in 'CHICAGO' or 'DALLAS'.
+4. Show the department names and the highest salary among employees in each department.
+5. Display the employee names and their hire dates, sorted by hire date in descending order.

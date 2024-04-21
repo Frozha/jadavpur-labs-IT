@@ -1,0 +1,10 @@
+ SELECT * FROM EMP;
+ select deptno , dname from dept;
+ select empno,ename,deptno from emp where deptno =20;
+ select * from emp order by deptno desc;
+ select distinct job from emp;
+ select ename, sal,deptno from emp where deptno=20 and job = 'CLERK';
+ select ename,hiredate from emp where ename like 'S%' or ename like '_C%';
+ select ename, hiredate, sal from emp where job!='MANAGER';
+ select initcap(ename), length(ename) from emp;
+ select ename from emp where sal between 4000 and 6000;

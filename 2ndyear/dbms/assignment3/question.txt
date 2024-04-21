@@ -1,0 +1,15 @@
+Assignment 3
+
+In an educational institute, various numbers of courses are offered. In each course, 7 numbers of subjects are taught. One student can select minimum 5 and maximum 6 numbers of subjects for that course. Each course has maximum intake capacity. The same subject may be taught in various courses. The system must be able to handle course, subject, student, marks grade and enrollment information. Assumptions also can be made. Design an ER diagram and database schema for the system. Specify the primary key, foreign key and other constraints for all required tables. Draw the ER diagram in MS Word. 
+1.Insert at least five tuples in each table.
+2.At the time of creation if we forget to create a field enrollment date (ENROLL_DATE) in ENROLL table so add the field.
+3.Course name cannot be blank, therefore add the criteria in the specific table.
+4.Find the Course which has more than 3 students.
+5.Give the details of a STUDENT with all Subjects and Grade where he/she enroll (Enter the sid value as input).
+6.Display the course where the maximum number of students enrolls.
+7.Find out the course where no student is enrolled.
+8.Delete Course no 30 from COURSE table.
+9.Rename the COURSE table as DEPARTMENT.  
+10.Change the Marks Grade of Student “A” to “B” who is Enroll in the subject DBMS.
+11.Delete the record of the student who is enrolled in the course ‘IT’.
+12.Change the enroll date to ‘16-08-2018’ whose student id is 18069 (first convert the date into the default format).

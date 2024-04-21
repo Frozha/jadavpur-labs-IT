@@ -1,0 +1,37 @@
+CREATE TABLE Employee (
+    Empno NUMBER(5) NOT NULL PRIMARY KEY,
+    Name VARCHAR(50),
+    Empcity VARCHAR(20)
+);
+
+CREATE TABLE Workson (
+    Empno NUMBER(5) NOT NULL,
+    Company_name VARCHAR(100),
+    Salary NUMBER(10, 2),
+    FOREIGN KEY (Empno) REFERENCES Employee(Empno)
+);
+
+--alter table workson modify Empno NUMBER(5) NOT NULL;
+
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(1, 'John Doe', 'New York');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(2, 'Jane Smith', 'Los Angeles');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(3, 'Michael Johnson', 'Chicago');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(4, 'Emily Brown', 'Houston');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(5, 'David Lee', 'San Francisco');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(6, 'Sarah Wilson', 'Boston');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(7, 'Daniel Davis', 'Seattle');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(8, 'Jessica Martinez', 'Miami');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(9, 'Robert Anderson', 'Dallas');
+INSERT INTO Employee (Empno, Name, Empcity) VALUES(10, 'Olivia Garcia', 'Atlanta');
+
+
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (1, 'Company A', 60000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (2, 'Company B', 55000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (3, 'Company C', 65000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (4, 'Company A', 58000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (5, 'Company D', 70000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (6, 'Company B', 52000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (7, 'Company A', 62000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (8, 'Company E', 58000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (9, 'Company C', 68000);
+INSERT INTO Workson (Empno, Company_name, Salary)VALUES    (10, 'Company A', 59000);

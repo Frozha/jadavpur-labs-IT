@@ -1,0 +1,12 @@
+--creation.txt
+ALTER TABLE enrollments ADD enroll_date DATE;
+ALTER TABLE courses MODIFYcourse_name VARCHAR(255) NOT NULL;
+select course_name, cnt count_enrollments from(select course_id, count(course_id) cnt from enrollments group by course_id) natural join courses ;
+select enrl_id, name, course_id, subject_id, subject_name, semester, subject_marks, email from enrollment_subjects natural join grades natural join subjects natural join enrollments natural join students where enrl_id = 1008 order by semester;
+select * from (select row_number() over(order by cnt desc) rno, course_name, cnt count_enrollments from(select course_id, count(course_id) cnt from enrollments group by course_id) natural join courses) where rno=1;
+select * from (select course_id, count(course_id) cnt from enrollments group by course_id) natural left join courses where cnt = NULL;
+delete from course WHERE course_id =30;
+ALTER TABLE course RENAME TO department;
+update grades set subject_marks = (subject_marks-10) where (enrl_id, subject_id) in (select enrl_id, subject_id from grades natural join subjects where subject_name = 'Database Management');
+delete from enrollments where (enrl_id, course_id) in (select enrl_id, course_id from enrollments natural join departments where course_name = 'Math'and enrl_id = 1001);
+update enrollments set enroll_date = to_date('16-08-2018','DD-MM-RRRR') where student_id = 2022001;

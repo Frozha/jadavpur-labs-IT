@@ -1,0 +1,71 @@
+1.select ENAME, MGR, INITCAP(to_char(HIREDATE,'ddspth month, yyyy')) DATE_HIRED from emp where LOWER(job)='clerk' or deptno = 20;
+
+2.SELECT ENAME, SAL OLD_SALARY, ROUND(SAL*1.25) NEW_SALARY FROM EMP;
+
+3.select rpad(ename,10) ename, lpad(sal,15) salary from emp;
+
+4.SELECT INITCAP(ENAME||' '||JOB) ROLE_OF_THE_EMPLOYEE FROM EMP;
+
+5.--SELECT * FROM EMP WHERE JOB='&JOB';
+
+--DEFINE JOB_V VARCHAR2(10);
+--JOB_V='CLERK';
+--SELECT * FROM EMP WHERE JOB='&JOB_V';
+
+6.SELECT  ENAME, HIREDATE, ADD_MONTHS(HIREDATE,12) REVIEWDATE 
+    FROM EMP 
+    ORDER BY REVIEWDATE;
+
+7.SELECT * 
+    FROM EMP 
+    WHERE (JOB,SAL) IN (SELECT JOB,max(SAL) FROM EMP GROUP BY JOB ) 
+    ORDER BY SAL;
+
+8.SELECT DEPTNO, ENAME 
+    FROM EMP 
+    WHERE (DEPTNO,SYSDATE-HIREDATE) 
+    		IN 
+    		(SELECT DEPTNO, MIN(SYSDATE-HIREDATE) FROM EMP GROUP BY DEPTNO) 
+    GROUP BY DEPTNO,ENAME;
+
+9.SELECT EMP.DEPTNO ,COUNT(EMPNO) 
+    FROM EMP,DEPT 
+    WHERE DEPT.DEPTNO = EMP.DEPTNO 
+    GROUP BY EMP.DEPTNO 
+    ORDER BY EMP.DEPTNO;
+
+10.select emp.empno, emp.ename, emp.sal, salgrade.grade 
+    from emp, salgrade 
+    where (emp.sal between salgrade.losal and salgrade.hisal)
+    	and 
+    	  (emp.deptno, emp.sal) in (select deptno, max(sal) from emp group by deptno) 
+    order by emp.deptno;
+
+11.SELECT YEAR, EMP_JOINED
+	FROM (SELECT EXTRACT(YEAR FROM HIREDATE) YEAR, COUNT(EXTRACT(YEAR FROM HIREDATE)) EMP_JOINED 
+    		FROM EMP 
+			GROUP BY EXTRACT(YEAR FROM HIREDATE))
+	WHERE EMP_JOINED = (SELECT MAX(COUNT(EXTRACT(YEAR FROM HIREDATE))) EMP_JOINED 
+    						FROM EMP 
+							GROUP BY EXTRACT(YEAR FROM HIREDATE));
+
+12.select indx.r row_number,emp.* 
+    from emp, (select empno, (row_number() over (order by empno))-1 r from emp) indx 
+    where (emp.empno = indx.empno) and (remainder(indx.r,2)=0);
+
+13.select sum(ctc) total_sal 
+    from (select emp.*, r.ctc ctc 
+    			from emp, ((select sal + comm ctc, empno 
+    							from emp where comm is not null) 
+    						union 
+    						(select sal ctc, empno 
+    							from emp where comm is null)) r 
+		where r.empno = emp.empno);
+
+14.select dname, listagg(job, ', ') within group (order by dname) available_job 
+    from (select distinct dept.dname dname ,emp.job job from emp, dept where dept.deptno = emp.deptno order by dept.dname) 
+    group by dname;
+
+15.select dname, listagg(ename, ', ') within group (order by dname) employees 
+    from (select distinct dept.dname dname, emp.ename ename from emp, dept where emp.deptno=dept.deptno order by dept.dname) 
+    group by dname;

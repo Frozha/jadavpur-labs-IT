@@ -1,0 +1,10 @@
+PL/SQL Assignment 4, 2023
+
+1. Write a PL/SQL code to print Today is fall on weekend or weekdays using if else statement.
+2. Write a PL/SQL code to check that an inputted a single character is vowel or not .If vowel then display which vowel it is.
+3. Write a PL/SQL code block to find out the sum of first twenty natural numbers (1+2+3+4+5+6+7+8+9+10+-----+20 this series).
+4. Write a PL/SQL block that will ask for two numbers and one operand (+, -, *, /). Then it will calculate and display the result.
+5. Write a PL/SQL code block to display a number in a reverse way.
+6. Write a PL/SQL block to display the dates of this month which are Tuesday.
+7. Write a program in PL/SQL to print the prime numbers between 1 to50.
+8. Write a program in PL/SQL to print the sum of digits of a number [eg: 635=14].

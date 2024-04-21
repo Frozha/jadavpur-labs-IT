@@ -1,0 +1,5 @@
+1. select manager.ename employee, emp.ename manager from (select ename, mgr from emp) manager, emp where manager.mgr = emp.empno;
+2. select g.num_of_employees, dept.dname from (select count(ename) num_of_employees, deptno from emp group by deptno) g, dept where g.deptno = dept.deptno;
+3. select emp.ename, emp.job, emp.sal from (select deptno, dname from dept where loc = 'CHICAGO' OR loc = 'DALLAS') department,emp where emp.deptno = department.deptno;
+4. select msal.highest_sal, dept.dname from (select max(sal) highest_sal,deptno from emp group by deptno) msal, dept where msal.deptno = dept.deptno;
+5. select ename, hiredate from emp order by hiredate desc;
