@@ -1,0 +1,15 @@
+Data Structure Laboratory Assignment
+SET-I
+1. Write a program to take a 10 element array as input and delete the 3rd and 6th element. 
+Now print the 5th element of the resulting array.
+2. Write a program to reverse a list of integers.
+3. Write a program to add two sparse polynomials.
+4. Write a program to evaluate sparse polynomial.
+5. Write a polynomial to multiply two sparse polynomials.
+6. Take two large numbers as input and add them. (Large no means that the no’s does not 
+fall within the range of integer or long int). 
+7. Write a program to add two sparse matrixes. 
+8. Write a program to find number of non-zero elements in each row of a sparse matrix.
+9. Derive the formulae for index of one dimensional array in terms of indices of two 
+dimensional Arrays. To access an element in one dimensional array, use the indices from 
+two dimensional Arrays. In this way print the content of the one dimensional array.

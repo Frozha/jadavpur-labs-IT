@@ -1,0 +1,19 @@
+1. Write a menu driven program to do the following  
+    a. Create a binary tree of your own choice.  
+    b. Perform in-order traversal.  
+    c. Perform pre-order traversal.  
+    d. Perform post-order traversal  
+2. Write a program to create a binary tree from its pre-order and in-order traversal.  
+3. Write a menu driven program to do the following  
+    a. Create a binary search tree.  
+    b. Search a key in the binary search tree.  
+    c. Find in-order predecessor and successor of a node whose key will be an user  input.  
+    d. Insert a key in the binary search tree.  
+    e. Delete a key from binary search tree.  
+4. Write a program to sort a given set of integers using following algorithms. Your program  must display the output for every pass.  
+    a. Insertion sort  
+    b. Selection sort  
+    c. Bubble sort  
+    d. Quick sort  
+    e. Merge sort  
+    f. Heap sort 
