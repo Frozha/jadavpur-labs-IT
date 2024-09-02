@@ -7,9 +7,18 @@
 #include<string.h>
 
 #define pservepath "parentserver"
-#define cservepath "childserver"
+#define numbr 1024
 
-void send_data(int reciever_fd, char data[]);
+void send_data(int reciever_fd){
+	//sending 1 to numbr numbers
+	int i = 1;
+	int buffer[numbr];
+	memset(&buffer, 0, sizeof(int)*numbr);
+	for(i=1;i<=numbr;i++){
+		buffer[i-1] = i;
+	}
+	write(reciever_fd, &buffer, numbr*sizeof(int));
+}
 int verify_data(char data[]);
 
 
@@ -36,11 +45,14 @@ int main(){
 			perror("child : connect failed.");
 		}
 		printf("child : connected.\n");
+		
+		send_data(sfd);	
+		
 
 		if(close(sfd)==-1){
 			fprintf(stderr, "child : socket closing failed %d", sfd);
 		}
-		
+		printf("child : connection closed.");
 
 		exit(0);
 	}else{
@@ -81,9 +93,10 @@ int main(){
 		} 
 		printf("parent : connected.\n");
 
-
-
-
+			
+		int buffer[numbr];
+		read(cfd, &buffer, sizeof(int)*numbr);
+		printf("parent : %d\n", buffer[1]);
 		
 		
 
@@ -93,7 +106,7 @@ int main(){
 		if(close(pfd)==-1){
 			fprintf(stderr, "parent : file descriptor %d could not be closed.", pfd);
 		}
-
+		printf("parent : connection closed.\n");
 	}
 
 }
