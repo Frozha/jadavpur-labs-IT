@@ -1,30 +1,42 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include<stdint.h>
-#define BUFFER_SIZE 8
-#define FIFO "fifofile"
+/***********************************************
+ * *
+ * * 	Name : Hrithvik Kondalkar
+ * *	Roll : 002211001088
+ * *	Date : 5th aug 2024
+ * *
+ * * 	Assignment 2b :
+ * *	Transfer 1GB data using fifo file bidirectionally between 2 processes.
+ * *
+ * *
+ * * 	Compilation command : make 2b
+ * *	[refer to makefile for detailed compilation instructions]
+ * * 	Exectution command  : ./088_2b_eater.out
+ * *	[both feeder and eater need to be executing to exchange data
+ * *	in case of either is not running the running program will be blocked
+ * *	the pipe will be blocked till other end is opened.]
+ * *
+ * *
+ * *	Output generated : 
+ * *	16383 : 61.068322 seconds for recieving 1073741824 bytes data.
+ * *	16383 : 60.030127 seconds for sending 1073741824 bytes data.
+ * *	16383 : 121.098763 seconds for entire double transfer of 1073741824 bytes.
+ * *	
+ * *
+ * *
+ * *	ls -l output:
+ * *	
+ 
+ 
+ ************************************************/
+
+#include"exlib/088_2b.h"
+
 int main(){
-        int32_t val;
-	int32_t fd = open(FIFO, O_RDONLY);
-        if(fd == -1){
-                perror("fifo open failed.");
-                exit(-1);
-        }
-	uint32_t bytesleft = BUFFER_SIZE;
-        uint32_t bytesread;
-	while(bytesleft>0){
-                bytesread = read(fd, &val, sizeof(val));
-		if(bytesread==-1){//didnt read
-			printf("couldn't read from fifo");
-			sleep(1);
-		}
-		printf("%d\n", val);
-		sleep(1);
-                bytesleft-=bytesread;
-        }
-        exit(0);
+	clock_t start, end;
+	start = clock();
+        recieve__(28932);
+	send__(28932);
+	end = clock();
+	printf("%d : %f seconds for entire double transfer of %d bytes.\n",getpid(), ((double) (end - start)) / CLOCKS_PER_SEC,DATA_TRANSFER_SIZE);
 }
 

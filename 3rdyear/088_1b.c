@@ -9,8 +9,8 @@
  * *	use of getenv and setenv system calls
  * *
  * *
- * * 	Compilation command : gcc 088_1b.c -o 088_1b
- * * 	Exectution command  : ./088_1b
+ * * 	Compilation command : gcc 088_1b.c -o 088_1b.out
+ * * 	Exectution command  : ./088_1b.out
  * *
  * *
  * * 	Output Generated:
