@@ -28,6 +28,7 @@
 
 #include<stdio.h>
 #include<signal.h>
+#include<unistd.h>
 
 int count = 0;
 

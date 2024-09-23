@@ -30,41 +30,50 @@
  * *
  * ***********************************************************************/
 
-#include<stdlib.h>
-#include<stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void printenv(const char* env){
-	const char* envbl =  getenv(env);
-	if(envbl==NULL){
-		printf("null(%s env variable was not found)", env);
-	}else{
-		printf("%s", envbl);
-	}
+void printenv(const char* env) {
+    const char* envbl = getenv(env);
+    if (envbl == NULL) {
+        printf("null (%s env variable was not found)", env);
+    } else {
+        printf("%s", envbl);
+    }
 }
 
-int main(int a, char* ac){
-	printf("reading system variables.\n");
-	printf("\nUSER : ");
-	printenv("USER");
-	printf("\nHOME : ");
-	printenv("HOME");
-	printf("\nHOST : ");
-	printenv("HOST");
-	printf("\nARCH : ");
-	printenv("ARCH");
-	printf("\nDISPLAY : ");
-	printenv("DISPLAY");
-	printf("\nPRINTER : ");
-	printenv("PRINTER");
-	printf("\nPATH : ");
-	printenv("PATH");
-	printf("\n");
-	printf("writing env variables.\n");
-	setenv("MYENV1", "env1val", 1);
-	printf("\nMYENV1 : ");
-	printenv("MYENV1");	
-	setenv("MYENV2", "env2val", 1);
-	printf("\nMYENV2 : ");
-	printenv("MYENV2");
-	printf("\n");
+int main(int argc, char* argv[]) {
+    printf("reading system variables.\n");
+
+    const char* env_vars[] = {
+        "USER",
+        "HOME",
+        "HOST",
+        "ARCH",
+        "DISPLAY",
+        "PRINTER",
+        "PATH"
+    };
+    
+    // Calculate the number of environment variables
+    size_t num_env_vars = sizeof(env_vars) / sizeof(env_vars[0]);
+    
+    for (size_t i = 0; i < num_env_vars; ++i) {
+        printf("\n%s : ", env_vars[i]);
+        printenv(env_vars[i]);
+    }
+
+    printf("\n");
+    printf("writing env variables.\n");
+    
+    setenv("MYENV1", "env1val", 1);
+    printf("\nMYENV1 : ");
+    printenv("MYENV1");
+
+    setenv("MYENV2", "env2val", 1);
+    printf("\nMYENV2 : ");
+    printenv("MYENV2");
+
+    printf("\n");
+    return 0;
 }
