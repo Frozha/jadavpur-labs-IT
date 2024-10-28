@@ -24,7 +24,10 @@ all: 1b 2a 2b 3 4
 	@echo Compiling Assignment 5
 	gcc 088_5.c -pthread -o 088_5.out
 
-	
+7: 088_7.c
+	@echo Compiling Assignment 7
+	gcc 088_7.c -pthread -o 088_7.out
+
 clean:
 	rm -f *.bin fifofile *.out *.txt
 
