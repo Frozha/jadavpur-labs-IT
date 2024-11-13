@@ -1,4 +1,4 @@
-all: 1b 2a 2b 3 4
+all: 1b 2a 2b 3 4 5 6 7
 
 1b:088_1b.c
 	gcc 088_1b.c -o 088_1b.out
@@ -23,6 +23,10 @@ all: 1b 2a 2b 3 4
 5: 088_5.c
 	@echo Compiling Assignment 5
 	gcc 088_5.c -pthread -o 088_5.out
+
+6: 088_6.c
+	@echo Compiling Assignment 6
+	gcc 088_6.c -o 088_6.out
 
 7: 088_7.c
 	@echo Compiling Assignment 7
