@@ -1,4 +1,47 @@
 #!/bin/bash
+# Output
+
+#
+#Creating a directory 'All My Cprogs Files' in the current working directory...
+#Directory 'All My Cprogs Files' created.
+
+#Moving all .c files to 'All My Cprogs Files' directory...
+#All .c files moved to 'All My Cprogs Files'.
+
+#Listing all files in the current directory:
+#088_8.sh  'All My Cprogs Files'   reset.sh   textfile.txt
+
+#Displaying the current working directory:
+#/workspaces/jadavpur-labs-IT/3rdyear/os/Assignment8
+
+#Displaying the current date in dd:mm:yy format:
+#13:11:24
+
+#Counting the number of files in the current directory:
+#Number of files in the current directory: 4
+
+#Creating a file named 'c_files_list.txt' that lists all .c files in the current directory...
+#'c_files_list.txt' created with a list of .c files.
+
+#Enter two numbers to calculate their sum.
+#Enter first number:
+#2
+#Enter second number:
+#2
+#Sum of 2 and 2 is: 4
+
+#Enter a filename to convert lowercase to uppercase and vice versa:
+#textfile.txt
+#Converted file saved as 'converted_textfile.txt'.
+#
+#Enter a number to generate a pattern:
+#4
+#Pattern:
+#1 
+#1 2 
+#1 2 3 
+#1 2 3 4 
+
 
 # Override HOME variable to be the current working directory
 # for the sake of not affecting all other C files
