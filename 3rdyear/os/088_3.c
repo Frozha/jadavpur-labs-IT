@@ -76,7 +76,7 @@ void write_random_file(const char* datafilepath){
         int32_t data = rand()%INT32_MAX;
         byteswritten-=sizeof(int32_t)*fwrite(&data, sizeof(int32_t), 1, datafp);
     }
-    printf("number of random bytes written : %d \n", DATA_TRANSFER_SIZE-byteswritten);
+    printf("number of random bytes written : %ld \n", DATA_TRANSFER_SIZE-byteswritten);
     fclose(datafp);
 }
 
