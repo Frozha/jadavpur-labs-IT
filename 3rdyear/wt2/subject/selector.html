@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html >
+<head>
+	    <script>
+        function showSubjects(event) {
+            event.preventDefault();
+
+            var year = document.getElementById('year').value;
+            var semester = document.getElementById('semester').value;
+
+            var subjects = [];
+
+            if (year == 1) {
+                if (semester == 1) {
+                    subjects = ['Mathematics I', 'Physics I', 'Programming Basics', 'Introduction to IT'];
+                } else if (semester == 2) {
+                    subjects = ['Mathematics II', 'Physics II', 'Data Structures', 'Computer Networks'];
+                }
+            } else if (year == 2) {
+                if (semester == 1) {
+                    subjects = ['Discrete Mathematics', 'Algorithms', 'Digital Logic Design', 'Database Systems'];
+                } else if (semester == 2) {
+                    subjects = ['Operating Systems', 'Object-Oriented Programming', 'Software Engineering', 'Computer Architecture'];
+                }
+            } else if (year == 3) {
+                if (semester == 1) {
+                    subjects = ['Data Communication', 'Computer Networks II', 'Web Development', 'Software Project Management'];
+                } else if (semester == 2) {
+                    subjects = ['Artificial Intelligence', 'Cloud Computing', 'Database Administration', 'Mobile App Development'];
+                }
+            } else if (year == 4) {
+                if (semester == 1) {
+                    subjects = ['Machine Learning', 'Cybersecurity', 'Big Data Analytics', 'IT Project Management'];
+                } else if (semester == 2) {
+                    subjects = ['Internet of Things', 'Blockchain Technology', 'Cloud Security', 'Elective Courses'];
+                }
+            }
+
+            var subjectsDiv = document.getElementById('subjects');
+            subjectsDiv.innerHTML = '<h3>Subjects for Year ' + year + ', Semester ' + semester + ':</h3>';
+            subjectsDiv.innerHTML += '<ul>';
+            for (var i = 0; i < subjects.length; i++) {
+                subjectsDiv.innerHTML += '<li>' + subjects[i] + '</li>';
+            }
+            subjectsDiv.innerHTML += '</ul>';
+        }
+    </script>
+</head>
+<body>
+Subjects for Department of Information Technology
+<br/><br/>
+  <form onsubmit="showSubjects(event);" method="POST" charset=utf-8>
+	<label> Year 
+  	<select id="year" name="year">
+		<option value="1">1st 	</option>
+		<option value="2">2nd	</option>
+		<option value="3">3rd 	</option>
+		<option value="4">4th 	</option>
+	</select>
+	</label>
+	<label> Semester
+	<select id="semester" name="semester">
+		<option value="1">1st 	</option>
+		<option value="2">2nd	</option>
+	</select><br/>
+	<input type='submit'>
+  </form><br/>
+<hr/><br/>
+	<div id="subjects">
+		
+	</div>
+
+</body>
+</html>
