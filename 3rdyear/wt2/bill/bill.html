@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+   
+    window.onload = function() {
+      const now_rad = document.getElementById('now');
+      const later_rad = document.getElementById('later');
+
+      now_rad.addEventListener('change', function() {
+        if (now_rad.checked) {
+          var addn_div = document.getElementById("additional");
+          addn_div.innerHTML = ""; 
+        }
+      });
+
+
+      later_rad.addEventListener('change', function() {
+        if (later_rad.checked) {
+          var addn_div = document.getElementById("additional");
+          addn_div.innerHTML = "Date of Payment : <input type='date' name='date' required><br/>";
+        }
+      });
+    };
+	</script>
+</head>
+<body>
+	Bill Payment options
+  <form>
+    <label>Pay Now</label>
+    <input id="now" type="radio" name="pay_opt" value="0" checked><br/>
+    <label>Pay Later</label>
+    <input id="later" type="radio" name="pay_opt" value="1"><br/>
+    
+    <div id="additional"></div>
+
+    <input type='submit'>
+  </form>
+</body>
+</html>
