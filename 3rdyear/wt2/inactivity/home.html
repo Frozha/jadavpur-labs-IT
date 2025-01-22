@@ -1,0 +1,20 @@
+home page
+<script type="text/javascript">
+function inactivityTimeout() {
+    var time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeydown = resetTimer;
+
+    function logout() {
+        location.href = 'logout.html'
+    }
+
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(logout, 10000);
+    }
+}
+
+inactivityTimeout();
+</script>
