@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questionPaper SYSTEM "question.dtd"> 
+
+<questionPaper>
+    <question no="1">
+        <text>q1</text>
+        <optionA>o1a</optionA>
+        <optionB>o1b</optionB>
+        <optionC>o1c</optionC>
+        <optionD>o1d</optionD>
+        <answer value="optionA">o1a</answer>
+    </question>
+
+   <question no="2">
+        <text>q2</text>
+        <optionA>o2a</optionA>
+        <optionB>o2b</optionB>
+        <optionC>o2c</optionC>
+        <optionD>o2d</optionD>
+        <answer value="optionB">o2b</answer>
+    </question>
+   
+   <question no="3">
+        <text>q3</text>
+        <optionA>o3a</optionA>
+        <optionB>o3b</optionB>
+        <optionC>o3c</optionC>
+        <optionD>o3d</optionD>
+        <answer value="optionC">o3c</answer>
+    </question>
+</questionPaper>
+
+
+
+
+
+	
+	
