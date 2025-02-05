@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+	
+	let data ={};
+        
+	async function fetchData() {
+            try {
+                const response = await fetch('/states-and-districts.json'); 
+                 data = await response.json(); 
+                populateStates();
+		populateDistricts();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        //populate the state dropdown
+        function populateStates() {
+            const stateDropdown = document.getElementById("state");
+            data.states.forEach(stateObj => {
+                const option = document.createElement("option");
+                option.value = stateObj.state;
+                option.text = stateObj.state;
+                stateDropdown.appendChild(option);
+            });
+        }
+
+        //populate the district dropdown based on the selected state
+        function populateDistricts() {
+            const stateDropdown = document.getElementById("state");
+            const districtDropdown = document.getElementById("district");
+            const selectedState = stateDropdown.value;
+
+            // clear existing options
+            districtDropdown.innerHTML = "";
+
+            // selected state's districts
+            const selectedStateObj = data.states.find(stateObj => stateObj.state === selectedState);
+		
+            if (selectedStateObj) {
+                selectedStateObj.districts.forEach(district => {
+                    const option = document.createElement("option");
+                    option.value = district;
+                    option.text = district;
+                    districtDropdown.appendChild(option);
+                });
+            }
+        }
+
+        //handle the form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+            
+            const stateDropdown = document.getElementById("state");
+            const districtDropdown = document.getElementById("district");
+            
+            const selectedState = stateDropdown.value;
+            const selectedDistrict = districtDropdown.value;
+
+            const descriptionDiv = document.getElementById("description");
+            descriptionDiv.innerHTML = `${selectedDistrict} is in ${selectedState}.`;
+        }
+
+        window.onload = function() {
+	    fetchData();
+            document.getElementById("state").addEventListener("change", populateDistricts);
+            document.getElementById("stateForm").addEventListener("submit", handleFormSubmit);
+        };
+    </script>
+</head>
+<body>
+    <h1>State and District Selection</h1>
+    <form id="stateForm" method="POST" charset="utf-8">
+        <label> State
+            <select id="state" name="state">
+                <!-- State options will be populated here -->
+            </select>
+        </label>
+        <br/><br/>
+        <label> District
+            <select id="district" name="district">
+                <!-- District options will be populated here based on state selection -->
+            </select>
+        </label>
+        <br/><br/>
+        <input type="submit" value="Submit">
+    </form>
+    <br/>
+    <hr/>
+    <br/>
+    <div id="description">
+        <!-- The result will be displayed here after form submission -->
+    </div>
+</body>
+</html>
