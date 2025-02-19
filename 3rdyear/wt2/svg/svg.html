@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Animation</title>
+</head>
+<body>
+    <svg height="200" width="500" xmlns="http://www.w3.org/2000/svg">
+        <ellipse rx="100" ry="25" cx="250" cy="100" style="fill:none;stroke:blue;stroke-width:1"/>
+        <ellipse rx="100" ry="25" cx="250" cy="100" style="fill:none;stroke:blue;stroke-width:1">
+            <animateTransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+                              from="0 250 100"
+                              to="60 250 100"
+                              dur="1s"
+                              fill="freeze"/>
+        </ellipse>
+        <ellipse rx="100" ry="25" cx="250" cy="100" style="fill:none;stroke:blue;stroke-width:1">
+            <animateTransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+                              from="0 250 100"
+                              to="120 250 100"
+                              dur="2s"	
+                              fill="freeze"/>
+        </ellipse>
+    </svg>
+</body>
+</html>
