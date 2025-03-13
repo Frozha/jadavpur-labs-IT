@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
 
     <h2>Access Chatroom</h2>
     <input type="checkbox" id="toggleSwitch">
 
-    <form action="/chatroom" method="post" id="loginForm">
+    <form action="" method="post" id="loginForm">
         <input type="text" name="username" id="username" placeholder="Enter your username" required pattern="[a-zA-Z0-9]{1,}" class="input-field" />
         <input type="text" name="roomHash" id="roomHash" placeholder="Enter Chatroom host" class="input-field" style="display:none;" />
         <button type="submit" class="submit-btn">Submit</button>
@@ -37,35 +38,23 @@
             }
         });
 
-        // Function to hash a string (first 6 characters of SHA-256 hash)
-        async function hashString(str) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(str);
-            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert buffer to byte array
-            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert to hex
-            return hashHex.substring(0, 6); // Take first 6 characters of the hash
-        }
+    async function hashString(str) {
+        return CryptoJS.SHA256(str).toString().substring(0, 6); 
+    }
 
-        // Handle form submit
         form.addEventListener("submit", async (event) => {
-            event.preventDefault(); // Prevent the form from submitting immediately
-
+            event.preventDefault(); 
             const username = usernameField.value;
             let finalHash;
 
             if (toggleSwitch.checked) {
-                // If the checkbox is checked, hash the roomHash value itself
-                finalHash = await hashString(roomHashField.value); // Hash the roomHash field
+                finalHash = await hashString(roomHashField.value);
             } else {
-                // If the checkbox is unchecked, hash the username and use it for roomHash
-                finalHash = await hashString(username); // Hash the username field
+                finalHash = await hashString(username);
             }
 
-            // Update the form action to redirect to /login/{hash}
-            form.action = `/chatroom`;
-
-            // Submit the form after updating the action
+            form.action = `/chatroom/chat/${finalHash}`;
+            roomHashField.value = finalHash;
             form.submit();
         });
     </script>
