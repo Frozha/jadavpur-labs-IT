@@ -1,3 +1,5 @@
+package com.hw;
+
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -7,18 +9,20 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@ServerEndpoint(value = "/chatroom/{hash}")
+@ServerEndpoint(value = "/chat/{hash}")
 public class ChatroomWebSocket {
 
-    private static final Map<String, Set<Session>> rooms = new ConcurrentHashMap<>(); // Stores sessions by hash
+    private static final Map<String, Set<Session>> rooms = new ConcurrentHashMap<>();
 
     @OnOpen
     public void onOpen(Session session, @PathParam("hash") String hash) {
         rooms.putIfAbsent(hash, new HashSet<>());
-        rooms.get(hash).add(session);
+        synchronized (rooms.get(hash)) {
+            rooms.get(hash).add(session);
+        }
 
         try {
-            session.getBasicRemote().sendText("Welcome to the chatroom: " + hash);
+            session.getBasicRemote().sendText("✅ Connected to chatroom: " + hash);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,11 +31,16 @@ public class ChatroomWebSocket {
     @OnMessage
     public void onMessage(Session session, String message, @PathParam("hash") String hash) {
         Set<Session> roomClients = rooms.get(hash);
-        for (Session client : roomClients) {
-            try {
-                client.getBasicRemote().sendText(message);
-            } catch (IOException e) {
-                e.printStackTrace();
+
+        if (roomClients != null) {
+            synchronized (roomClients) {
+                for (Session client : roomClients) {
+                    try {
+                        client.getBasicRemote().sendText(message);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
@@ -40,7 +49,12 @@ public class ChatroomWebSocket {
     public void onClose(Session session, @PathParam("hash") String hash) {
         Set<Session> roomClients = rooms.get(hash);
         if (roomClients != null) {
-            roomClients.remove(session);
+            synchronized (roomClients) {
+                roomClients.remove(session);
+                if (roomClients.isEmpty()) {
+                    rooms.remove(hash);
+                }
+            }
         }
     }
 
