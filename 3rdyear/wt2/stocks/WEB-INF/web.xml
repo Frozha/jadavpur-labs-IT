@@ -1,0 +1,10 @@
+<web-app>
+	 <servlet>
+        	<servlet-name>st</servlet-name>
+        	<servlet-class>com.hw.StockPriceServlet</servlet-class>
+    	</servlet>
+    	<servlet-mapping>
+        	<servlet-name>st</servlet-name>
+        	<url-pattern>/stock</url-pattern>
+    	</servlet-mapping>
+</web-app>
