@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prices</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Real-time Stock Prices</h1>
+    <div style="width:auto; display: inline-flex;"> 
+        <div>
+            <p id="apple-price">Loading Apple price...</p>
+            <canvas id="stockChart1" width="500" height="500"></canvas>
+        </div>
+        <div>
+            <p id="google-price">Loading Google price...</p>
+            <canvas id="stockChart2" width="500" height="500"></canvas>
+        </div>
+    </div>
+    <script>
+        // Initialize SSE connection
+        const eventSource = new EventSource('/stocks/stock');
+        // Prepare data structure for Chart.js
+        let applePrices = [];
+        let googlePrices = [];
+        let timeLabels = [];
+
+        // Create the chart
+        const ctx1 = document.getElementById('stockChart1').getContext('2d');
+        const ctx2 = document.getElementById('stockChart2').getContext('2d');
+        const stockChart1 = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Apple (AAPL)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: applePrices,
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Stock Price ($)'
+                        },
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        const stockChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Google (GOOG)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    data: googlePrices,
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Stock Price ($)'
+                        },
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Listen for incoming events
+        eventSource.onmessage = function(event) {
+            const stockData = JSON.parse(event.data);
+            const timeStamp = new Date().toLocaleTimeString();
+
+            // Update stock prices for Apple and Google
+            applePrices.push(stockData.AAPL);
+            googlePrices.push(stockData.GOOG);
+            timeLabels.push(timeStamp);
+
+            // Limit the data size to the last 20 points
+            if (applePrices.length > 20) {
+                applePrices.shift();
+                googlePrices.shift();
+                timeLabels.shift();
+            }
+
+            // Update the chart
+            stockChart1.update();
+            stockChart2.update();
+            
+            // Update the UI with the stock prices
+            document.getElementById("apple-price").textContent = "Apple (AAPL): $" + stockData.AAPL;
+            document.getElementById("google-price").textContent = "Google (GOOG): $" + stockData.GOOG;
+        };
+
+        eventSource.onerror = function(event) {
+            console.error("Error in SSE connection:", event);
+        };
+    </script>
+</body>
+</html>
